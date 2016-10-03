@@ -8,8 +8,8 @@ import {Subscription} from "rxjs/Rx";
   templateUrl: 'shows.component.html',
   styles: [`
         .loader {
-            margin-top: 100px;
-            color: white;
+            margin-top: 200px;
+            color: yellow;
         }
     
 /* Extra small devices (portrait phones, less than 544px) */

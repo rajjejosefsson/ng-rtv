@@ -86,9 +86,35 @@ button.navbar-toggle.collapsed {
 }
 
 
-.navbar-collapse .input-group .form-control:last-child,
-.navbar-collapse .input-group .form-control:first-child {
-    border-radius: 5px;
+
+
+
+
+
+/* Extra small devices (portrait phones, less than 544px) */
+@media (max-width: 998px) {
+
+    /* Extra small devices (portrait phones, less than 544px) */
+    @media (min-width: 767px) {
+
+
+
+        input#email,
+        input#password
+        {
+            width: 90px;
+        }
+
+        .searchBox input{
+            width: 107px;
+        }
+
+        .container-fluid {
+            margin: 0 5px;
+        }
+
+
+    }
 }
 
 

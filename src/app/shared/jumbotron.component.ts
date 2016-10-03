@@ -2,8 +2,8 @@ import {Component, Input} from '@angular/core';
 
 
 @Component({
-  selector: 'rj-jumbotron',
-  template: `
+    selector: 'rj-jumbotron',
+    template: `
 
       <div class="outer-div">
         <div class="inner-div">
@@ -13,7 +13,7 @@ import {Component, Input} from '@angular/core';
         </div>
       </div>
 `,
-  styles: [`
+    styles: [`
 
 
 
@@ -35,15 +35,31 @@ import {Component, Input} from '@angular/core';
     background-size: cover;
 }
 
+rj-jumbotron h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+    color: white;
+    margin-top: 120px;
+}
+
+
+
+
      @media (max-width: 543px) {
      
      .outer-div {
-      height: 200px;
+      height: 150px;
      }
      
      .inner-div h1 {
         margin-top: 30px;
      }
+    
+      .inner-div h1 {
+        font-size: 40px;
+    }
+
      
      }
         
@@ -52,6 +68,6 @@ import {Component, Input} from '@angular/core';
 })
 export class JumbotronComponent {
 
-@Input() title;
+    @Input() title;
 
 }

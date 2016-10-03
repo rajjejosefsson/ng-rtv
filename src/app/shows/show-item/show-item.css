@@ -69,6 +69,38 @@ img {
     padding:0;
 }
 
+
+
+
+
+/* Medium devices (desktops, 992px and up) */
+@media (max-width: 1200px) {
+    .thumbnail{
+        width: 100%;
+        height: 280px;
+    }
+
+
+    .right-side-card{
+        margin-left: -100px;
+    }
+
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+
+    .right-side-card{
+        margin-left: 0px;
+    }
+
+
+
+}
+
+
+
 /* Extra small devices (portrait phones, less than 544px) */
 @media (max-width: 543px) {
     .thumbnail{
