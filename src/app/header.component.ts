@@ -69,7 +69,7 @@ export class HeaderComponent implements OnInit {
 
 
 
-  public isCollapsed:boolean = false;
+  public isCollapsed:boolean = true;
 
   onToggle(){
     this.isCollapsed = !this.isCollapsed;
