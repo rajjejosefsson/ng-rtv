@@ -1,0 +1,30 @@
+<div class="thumbnail col-sm-4 col-md-4">
+
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <img src="{{show?.poster_path}}" alt="...">
+        </div>
+
+        <div class="col-xs-8 col-sm-8 col-md-8">
+            <a (click)="onHeart()" class="glyphicon red-heart glyphicon-heart topright"></a>
+
+            <div class="info-block">
+                <h3>{{show?.name}}</h3>
+                <ul>
+                    <li>
+                        <span class="boldText">Status:</span>
+                        <span [class.running]="show?.status === 'Returning Series'"
+                              [class.ended]="show?.status === 'Ended'">
+                  {{show?.status}}</span>
+                    </li>
+
+                    <li *ngIf="show?.status !== 'Ended'">
+                        <span class="boldText">Schedule: </span>{{show?.schedule?.days}} {{show?.schedule?.time}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+

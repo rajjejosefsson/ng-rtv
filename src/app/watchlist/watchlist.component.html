@@ -1,0 +1,7 @@
+<rj-jumbotron><h1>Your Watchlist</h1></rj-jumbotron>
+
+<div class="container">
+  <div class="shows">
+    <rj-watchlist-item *ngFor="let show of watchlist" [show]="show"></rj-watchlist-item>
+  </div>
+</div>

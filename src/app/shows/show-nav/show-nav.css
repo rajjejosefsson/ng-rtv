@@ -1,0 +1,82 @@
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.md-pills .nav-link {
+    color: #666;
+    text-align: center;
+}
+
+.md-pills .nav-item .nav-link.active {
+    background-color: rgba(221, 44, 0, 1);
+    color: #fff;
+    border-radius: 2px;
+    transition: all .4s;
+}
+
+.nav > li > a:hover {
+    text-decoration: none;
+    background-color: rgba(255, 0, 0, 0.29);
+    border-radius: 2px;
+    transition: all .4s;
+}
+
+.nav-tabs {
+    border: 0;
+    padding: .7rem;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.nav-tabs .nav-item {
+    float: left;
+    text-align: center;
+    margin: 2px 0;
+}
+
+.nav-tabs .nav-link {
+    display: block;
+    padding: .5em 1em;
+    border-top-right-radius: .25rem;
+    border-top-left-radius: .25rem;
+    border: 0;
+}
+
+.nav select {
+    width: 100px;
+}
+
+.nav {
+    width: 70%;
+    margin-left: 15%;
+}
+
+/* Extra small devices (portrait phones, less than 544px) */
+@media (max-width: 543px) {
+.nav-tabs {
+    margin-top: 30px;
+}
+
+    .nav {
+        width: 100%;
+        margin-left: 0%;
+    }
+
+    .nav-tabs {
+        box-shadow: none;
+    }
+
+
+    .nav select {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+
+}
+
+
+

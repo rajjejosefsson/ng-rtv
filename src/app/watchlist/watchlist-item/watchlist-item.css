@@ -1,0 +1,48 @@
+.thumbnail {
+    border-radius: 0;
+    height: 200px;
+    width: 350px;
+    margin-right: 20px;
+    padding: 0;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+.info-block {
+    margin-top: 50px;
+    margin-left: 15px;
+    padding: 0;
+}
+
+.running {
+    color: #00d269;
+}
+
+.ended {
+    color: #bf0000;
+}
+
+img {
+    margin-right: 10px;
+    height: 200px;
+    float: left;
+}
+
+
+/* Red to grey heart */
+
+.red-heart.glyphicon-heart {
+    color: #ff0000;
+    cursor: pointer;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.red-heart.glyphicon-heart:hover {
+    color: #ad0000;
+    cursor: pointer;
+    font-size: 30px;
+    text-decoration: none;
+    transition: all 100ms ease-in;
+}

@@ -1,0 +1,86 @@
+<div class="detail-card">
+
+
+    <div class="top-div padding-20">
+        <div class="row">
+            <div class="poster-div col-md-4">
+                <div class="poster-image">
+                    <img src="{{show?.poster_path}}" alt="...">
+                </div>
+            </div>
+
+            <div class="show-card col-md-8">
+                <h1>
+                    <span>{{show?.name}}</span> <span class="first_air_year" *ngIf="show.first_air_date">({{show.first_air_date}})</span>
+                    <a (click)="onHeart()" [class.highlighted]="show?.isHearted"
+                       class="glyphicon grey-heart glyphicon-heart"></a>
+                </h1>
+
+
+                <p>{{show?.overview}}</p>
+
+                <div class="stars">
+                    <a class="glyphicon glyphicon-star"></a>
+                    <a class="glyphicon glyphicon-star"></a>
+                    <a class="glyphicon glyphicon-star"></a>
+                    <a class="glyphicon glyphicon-star-empty"></a>
+                    <a class="glyphicon glyphicon-star-empty"></a>
+                    <span class="rating">{{show?.vote_average}}</span>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div>
+                        <ul>
+                            <li>
+                                <span class="boldText">Status:</span>
+                                <span [class.ended]="show?.status === 'Ended'"
+                                      [class.running]="show?.status === 'Returning Series'">{{show?.status}}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <ul>
+                            <li><span class="boldText">Genres</span></li>
+                            <li *ngFor="let genre of show?.genres">{{genre}}</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="youtube-section">
+        <div class="row">
+
+            <div class="yt-container-outer col-md-xs-12">
+                <div class="video-container" *ngIf="show?.videoLinkKey">
+                    <iframe width="560" height="315" [src]="show?.videoLinkKey" frameborder="0"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <div class="img-section padding-20">
+        <div class="row">
+            <img src="https://image.tmdb.org/t/p/original/{{show?.backdrop_path}}" alt="">
+        </div>
+    </div>
+
+
+    <div class="casting-card padding-20">
+        <div class="row">
+            <h1>Casting</h1>
+            <br>
+            <rj-casting class="casting" *ngFor="let member of show?.cast" [casting]="member"></rj-casting>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+
+    <div class="navbar-header" >
+      <button type="button" (click)="onToggle()" class="navbar-toggle collapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div class="logo-div">
+      <a class="navbar-brand" routerLink="/home"> <img class="header-logo" src="assets/rtvlogo.png"></a>
+      </div>
+    </div>
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div [collapse]="isCollapsed" id="navbar" class="navbar-collapse collapse">
+
+      <ul class="nav navbar-nav">
+        <li  (click)="onToggle()"  [routerLinkActive]="['active']"><a routerLink="/shows"><i class="glyphicon glyphicon-film"></i>Tv-shows <span class="sr-only">(current)</span></a></li>
+        <li (click)="onToggle()" [routerLinkActive]="['active']" *ngIf="isAuth()"><a routerLink="/watchlist"><i class="glyphicon glyphicon-heart"></i>Your Watchlist</a></li>
+      </ul>
+
+
+      <form class="searchBox navbar-form navbar-left">
+        <div class="input-group">
+          <input type="text" class="form-control" #searchBox placeholder="Search show">
+          <span class="input-group-btn">
+           <button class="btn yellow-btn btn-default" type="button"(click)="onSearchClick(searchBox.value)">Go!</button>
+          </span>
+        </div>
+      </form>
+
+      <form [formGroup]="myForm" (ngSubmit)="onSignin()" class="navbar-form navbar-right" *ngIf="!isAuth()">
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="email" id="email" placeholder="Username">
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" formControlName="password"  id="password" placeholder="Password">
+        </div>
+
+        <button type="submit" class="btn yellow-btn btn-default">Login</button>
+      </form>
+
+      <ul class="nav navbar-nav navbar-right" *ngIf="isAuth()">
+         <li><a (click)="onLogout()" style="cursor: pointer;"><i class="glyphicon glyphicon-user"></i>Logout</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
