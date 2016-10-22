@@ -8,7 +8,6 @@ import {Component, ViewEncapsulation} from '@angular/core';
       rj-home { 
         width: 100%;
         height: 800px;
-        margin-top: 100px;
         float: left;
         background: linear-gradient(
           rgba(0, 0, 0, 0.5), 
