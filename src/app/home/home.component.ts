@@ -4,18 +4,16 @@ import {Component, ViewEncapsulation} from '@angular/core';
     selector: 'rj-home',
     templateUrl: 'home.component.html',
     styles: [`
-      html, body {margin:0px;}
 
-      rj-home { 
-        float:left;
-        width:100%;
+      body { 
+        width: 100%;
         height: 800px;
-        padding:5px;
-        background:
-        linear-gradient(
+        margin-top: 100px;
+        background: linear-gradient(
           rgba(0, 0, 0, 0.5), 
-          rgba(0, 0, 0, 0.5)), url(assets/cinema-min-600.jpg);
+          rgba(0, 0, 0, 0.5)), url(assets/cinema-min-600.jpg) no-repeat;
         background-size: cover;
+        
      }
      
      .title {
@@ -35,6 +33,20 @@ import {Component, ViewEncapsulation} from '@angular/core';
       .signup {
         margin-left: 25px;
         float: left;
+      }
+    }
+      
+      
+    @media (max-height: 1000px) {
+      .body {
+       height: 700px;
+      }
+    }
+    
+    
+        @media (max-height: 600px) {
+      .body {
+       height: 700px;
       }
     }
       

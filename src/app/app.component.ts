@@ -4,11 +4,10 @@ import {Component, ViewEncapsulation} from '@angular/core';
     selector: 'rj-root',
     template: `
     <div class="mypage">
-    <rj-header></rj-header>
-    <router-outlet></router-outlet>
+        <rj-header></rj-header>
+        <router-outlet></router-outlet>
     </div>
 `
-    , encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
 }
