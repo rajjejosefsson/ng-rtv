@@ -9,6 +9,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
         width: 100%;
         height: 800px;
         margin-top: 100px;
+        float: left;
         background: linear-gradient(
           rgba(0, 0, 0, 0.5), 
           rgba(0, 0, 0, 0.5)), url(assets/cinema-min-600.jpg) no-repeat;
