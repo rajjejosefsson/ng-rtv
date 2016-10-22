@@ -5,7 +5,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
     templateUrl: 'home.component.html',
     styles: [`
 
-      body { 
+      rj-home { 
         width: 100%;
         height: 800px;
         margin-top: 100px;
