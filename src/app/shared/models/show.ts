@@ -1,4 +1,4 @@
-import {Cast} from "../show-detail/casting/cast";
+import {Cast} from "./cast";
 import {Episode} from "./episode";
 export class Tvshow {
   constructor(public name:string,

@@ -1,42 +1,41 @@
 <div class="thumbnail col-xs-12 col-sm-6 col-md-6">
-        <div class="poster-image col-xs-4 col-sm-4 col-md-4">
-            <img src="{{show.poster_path}}" alt="...">
+    <div class="poster-image col-xs-4 col-sm-4 col-md-4">
+        <img src="{{show.poster_path}}" alt="...">
+    </div>
+
+    <div class="right-side-card col-xs-8 col-sm-8 col-md-8">
+        <a (click)="onHeart()" [class.highlighted]="show.isHearted" class="glyphicon grey-heart glyphicon-heart topright"> </a>
+        <div class="row">
+            <div class="info-block">
+                <h3>{{show.name}}</h3>
+                <p> {{show.overview | slice:0:160}}... </p>
+            </div>
         </div>
 
-        <div class="right-side-card col-xs-8 col-sm-8 col-md-8">
-            <a (click)="onHeart()" [class.highlighted]="show.isHearted"
-               class="glyphicon grey-heart glyphicon-heart topright"> </a>
-            <div class="row">
-                <div class="info-block">
-                    <h3>{{show.name}}</h3>
-                    <p> {{show.overview | slice:0:160}}... </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="line-separator"></div>
-            </div>
-
-            <div class="row">
-                <div class="bottom-block">
-
-                    <div class="more-info col-xs-10 col-sm-4 col-md-4">
-                        <a class="btn btn-default btnStyle" (click)="onDetail()">More info</a>
-                    </div>
-
-                    <div class="ratings col-xs-2 col-sm-8 col-md-8">
-                        <div class="rating">
-                            <a class="glyphicon glyphicon-star hidden-xs"></a>
-                            <a class="glyphicon glyphicon-star hidden-xs"></a>
-                            <a class="glyphicon glyphicon-star hidden-xs"></a>
-                            <a class="glyphicon glyphicon-star-empty hidden-xs"></a>
-                            <a class="glyphicon glyphicon-star-empty hidden-xs"></a>
-                            <span class="ratingnumber"> {{show.vote_average}}</span>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
+        <div class="row">
+            <div class="line-separator"></div>
         </div>
+
+        <div class="row">
+            <div class="bottom-block">
+
+                <div class="more-info col-xs-10 col-sm-4 col-md-4">
+                    <a class="btn btn-default btnStyle" (click)="onDetail()">More info</a>
+                </div>
+
+                <div class="ratings col-xs-2 col-sm-8 col-md-8">
+                    <div class="rating">
+                        <a class="glyphicon glyphicon-star hidden-xs"></a>
+                        <a class="glyphicon glyphicon-star hidden-xs"></a>
+                        <a class="glyphicon glyphicon-star hidden-xs"></a>
+                        <a class="glyphicon glyphicon-star-empty hidden-xs"></a>
+                        <a class="glyphicon glyphicon-star-empty hidden-xs"></a>
+                        <span class="ratingnumber"> {{show.vote_average}}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

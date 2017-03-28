@@ -6,7 +6,6 @@ import {ShowItemComponent} from "./show-item/show-item.component";
 
 import {FormsModule} from "@angular/forms";
 import {InfiniteScrollModule} from "angular2-infinite-scroll/angular2-infinite-scroll";
-import {TruncatePipe} from "./truncate.pipe";
 import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
@@ -14,7 +13,6 @@ import {SharedModule} from "../shared/shared.module";
         ShowsComponent,
         ShowItemComponent,
         ShowNavComponent,
-        TruncatePipe,
     ],
     imports: [
         CommonModule,

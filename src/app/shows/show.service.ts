@@ -5,36 +5,36 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class ShowService {
-
-  constructor(private http:Http) {
-  }
+  @Output() navChangeEmitter = new EventEmitter<string>();
 
   private API_ADRESS_TMDb = 'https://api.themoviedb.org/3';
   private SEARCH_TV = '/search/tv';
   private QUERY = '&query=';
-  private popularShows = "https://api.themoviedb.org/3/tv/popular";
-  private page:string = '&page=';
+  private popularShows = 'https://api.themoviedb.org/3/tv/popular';
   private API_KEY = env.API_KEY_TMDB;
+  private title;
+
+
+  constructor(private http: Http) {
+  }
+
 
   /************************/
   /*  Navigation Search   */
   /*       Emitter        */
   /************************/
-
-  @Output() navChangeEmitter = new EventEmitter<string>();
   getNavChangeEmitter() {
     return this.navChangeEmitter;
   }
 
 
   /***** Get and Set title *****/
-  private title;
 
   getTitle() {
     return this.title;
   }
 
-  setTitle(title:string) {
+  setTitle(title: string) {
     this.title = title;
     this.navChangeEmitter.emit(this.title);
   }
@@ -45,9 +45,9 @@ export class ShowService {
   /*     from TMDb        */
   /************************/
 
-  queryWithTitle(searchTerm:string) {
+  queryWithTitle(searchTerm: string) {
     return this.http.get(this.API_ADRESS_TMDb + this.SEARCH_TV + "?api_key=" + this.API_KEY + this.QUERY + searchTerm)
-      .map((response:Response) => response.json());
+      .map((response: Response) => response.json());
   }
 
 
@@ -67,14 +67,14 @@ export class ShowService {
   /*     from TMDb        */
   /************************/
   getPopularShowsDemo(pagenumber:number) {
-    return this.http.get(this.popularShows + "?api_key=" + this.API_KEY + '&page=' + pagenumber)
-      .map((data:Response) => data.json())
+    return this.http.get(`${this.popularShows}?api_key=${this.API_KEY}&page=${pagenumber}`)
+      .map((data: Response) => data.json());
   }
 
 
   getPopularShows(fromYear: any, pagenumber:number){
-    return this.http.get(this.DISCOVER_TV + "?api_key=" + this.API_KEY + '&with_genres=' + '&first_air_date.gte=' + fromYear + '&popularity.desc' + '&page=' + pagenumber)
-      .map((data:Response) => data.json())
+    return this.http.get(`${this.DISCOVER_TV}?api_key=${this.API_KEY}&first_air_date.gte=${fromYear}&popularity.desc&page=${pagenumber}`)
+      .map((data: Response) => data.json());
   }
 
 

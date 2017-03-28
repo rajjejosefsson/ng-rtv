@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Tvshow} from "../show";
+import {Tvshow} from '../../shared/models/show';
 import {WatchlistService} from "../../watchlist/watchlist.service";
 import {Router} from "@angular/router";
 import {ShowService} from "../show.service";
@@ -9,12 +9,13 @@ import {ShowService} from "../show.service";
   templateUrl: 'show-item.html',
   styleUrls: ['show-item.css'],
 })
-export class ShowItemComponent {
-  @Input() show:Tvshow;
 
-  constructor(private watchlistService:WatchlistService,
-              private showService:ShowService,
-              private router:Router) {
+export class ShowItemComponent {
+  @Input() show: Tvshow;
+
+  constructor(private watchlistService: WatchlistService,
+              private showService: ShowService,
+              private router: Router) {
   }
 
   onHeart() {
@@ -22,7 +23,7 @@ export class ShowItemComponent {
     if (this.show.isHearted) {
       this.watchlistService.addToWatchlist(this.show);
     } else {
-      this.watchlistService.removeFromWatchlist(this.show)
+      this.watchlistService.removeFromWatchlist(this.show);
     }
   }
 
@@ -30,5 +31,4 @@ export class ShowItemComponent {
     this.showService.setTitle(this.show.name);
     this.router.navigate(['/detail']);
   }
-
 }

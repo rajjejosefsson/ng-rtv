@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, EventEmitter, OnDestroy} from '@angular/core';
-import {Tvshow} from "../../shows/show";
+import {Tvshow} from "../../shared/models/show";
 import {Subscription} from "rxjs/Rx";
 import {WatchlistService} from "../watchlist.service";
 import {ShowService} from "../../shows/show.service";

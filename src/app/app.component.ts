@@ -1,4 +1,8 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { WatchlistService } from './watchlist/watchlist.service';
+import { AuthService } from './auth/auth.service';
+import { OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Component({
     selector: 'rj-root',
@@ -9,5 +13,16 @@ import {Component, ViewEncapsulation} from '@angular/core';
     </div>
 `
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+    constructor() {
+    }
+    
+    ngOnInit() {
+        firebase.initializeApp({
+            apiKey: 'AIzaSyCCZOdGCP0f2r4NmzIxhISaqenfQzIrUaM',
+            authDomain: 'rtv-watcher.firebaseapp.com',
+        });
+    }
+
 }

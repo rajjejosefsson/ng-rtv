@@ -1,36 +1,24 @@
-import {Component, OnInit, OnDestroy, ViewEncapsulation} from '@angular/core';
-import {ShowService} from "./show.service";
-import {Tvshow} from "./show";
-import {WatchlistService} from "../watchlist/watchlist.service";
-import {Subscription} from "rxjs/Rx";
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { ShowService } from "./show.service";
+import { Tvshow } from '../shared/models/show';
+import { WatchlistService } from "../watchlist/watchlist.service";
+import { Subscription } from "rxjs/Rx";
 @Component({
   selector: 'rj-shows',
   templateUrl: 'shows.component.html',
-  styles: [`
-        .loader {
-            margin-top: 200px;
-            color: yellow;
-        }
-    
-/* Extra small devices (portrait phones, less than 544px) */
-@media (max-width: 543px) {
-            
-        }
-      
-
-`]
+  styleUrls: ['shows.component.css']
 })
 
-export class ShowsComponent implements OnInit,OnDestroy {
-  private shows:Tvshow[] = [];
-  private watchlist:Tvshow[];
-  private subscription:Subscription;
-  private pageNR:number = 1;
+export class ShowsComponent implements OnInit, OnDestroy {
+  private shows: Tvshow[] = [];
+  private watchlist: Tvshow[];
+  private subscription: Subscription;
+  private pageNR: number = 1;
   private posterUrl = 'https://image.tmdb.org/t/p/w342/';
 
 
-  constructor(private showService:ShowService,
-              private watchlistService:WatchlistService) {}
+  constructor(private showService: ShowService,
+    private watchlistService: WatchlistService) { }
 
 
   ngOnInit() {
@@ -43,10 +31,10 @@ export class ShowsComponent implements OnInit,OnDestroy {
 
   private isStart = true;
 
-  onScroll(){
+  onScroll() {
     console.log(this.pageNR);
     this.pageNR += 1;
-    if (this.isStart){
+    if (this.isStart) {
       this.fetchAllPopularShows();
     } else {
       this.fetchPopularShowByGenre()
@@ -63,7 +51,7 @@ export class ShowsComponent implements OnInit,OnDestroy {
     this.shows = [];
     console.log(value);
 
-    if(value == 0){
+    if (value == 0) {
       console.log('VALUE IS NOLLL');
       this.isStart = true;
       this.fetchAllPopularShows();
@@ -77,20 +65,18 @@ export class ShowsComponent implements OnInit,OnDestroy {
 
   private selectedFromYear = 0;
 
-  getSelectedYear(value){
+  getSelectedYear(value) {
     this.shows = [];
-
-    if(value === 'All'){
+    if (value === 'All') {
       this.selectedFromYear = 0;
     } else {
       this.selectedFromYear = value;
     }
 
-    if(this.isStart){
+    if (this.isStart) {
       this.fetchAllPopularShows();
     } else {
       this.fetchPopularShowByGenre();
-
     }
   }
 
@@ -103,9 +89,9 @@ export class ShowsComponent implements OnInit,OnDestroy {
 
 
   fetchAllPopularShows() {
-    this.subscription = this.showService.getPopularShows(this.selectedFromYear ,this.pageNR).subscribe(data => {
-      let resultArray:Tvshow[] = [];
-      let heart:boolean = false;
+    this.subscription = this.showService.getPopularShows(this.selectedFromYear, this.pageNR).subscribe(data => {
+      let resultArray: Tvshow[] = [];
+      let heart: boolean = false;
       resultArray = data['results'];
 
       for (let i = 0; i < resultArray.length; i++) {
@@ -131,45 +117,44 @@ export class ShowsComponent implements OnInit,OnDestroy {
 
   fetchPopularShowByGenre() {
 
-    if (this.selectedFromYear == null){
+    if (this.selectedFromYear == null) {
       this.selectedFromYear = 0;
     }
 
 
-    if (this.selectedGenre == 0){
+    if (this.selectedGenre == 0) {
       this.fetchAllPopularShows();
       this.isStart = true;
       console.log('SELECTED GENRE IS 0');
     } else {
 
-    this.showService.getPopularByGenre(this.selectedGenre, this.selectedFromYear , this.pageNR).subscribe(showGenre => {
+      this.showService.getPopularByGenre(this.selectedGenre, this.selectedFromYear, this.pageNR).subscribe(showGenre => {
 
-      console.log(showGenre['results']);
-      let resultArray:Tvshow[] = [];
-      let heart:boolean = false;
+        console.log(showGenre['results']);
+        let resultArray: Tvshow[] = [];
+        let heart: boolean = false;
 
-      resultArray = showGenre['results'];
+        resultArray = showGenre['results'];
 
 
-      for (let i = 0; i < resultArray.length; i++) {
-        // Add the heart symbol to those shows from the watchlist
-        if (this.watchlist != null) {
-          for (let j = 0; j < this.watchlist.length; j++) {
-            if (this.watchlist[j].name === resultArray[i].name) {
-              heart = true;
+        for (let i = 0; i < resultArray.length; i++) {
+          // Add the heart symbol to those shows from the watchlist
+          if (this.watchlist != null) {
+            for (let j = 0; j < this.watchlist.length; j++) {
+              if (this.watchlist[j].name === resultArray[i].name) {
+                heart = true;
+              }
             }
           }
+          this.shows.push(new Tvshow(
+            resultArray[i].name,
+            resultArray[i].overview,
+            this.posterUrl + resultArray[i].poster_path,
+            resultArray[i].vote_average, heart
+          ));
+          heart = false;
         }
-        this.shows.push(new Tvshow(
-          resultArray[i].name,
-          resultArray[i].overview,
-          this.posterUrl + resultArray[i].poster_path,
-          resultArray[i].vote_average, heart
-        ));
-        heart = false;
-
-      }
-    });
+      });
     }
   }
 

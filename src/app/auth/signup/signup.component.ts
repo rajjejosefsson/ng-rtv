@@ -1,13 +1,13 @@
-import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
-import {AuthService} from "../shared/auth.service";
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
+import { AuthService } from "../auth.service";
 
 @Component({
     selector: 'rj-signup',
     template: `
          <div class="thumbnail col-xs-12">
             <form [formGroup]="myForm" (ngSubmit)="onSignup()">
- 
+
              <p> 
              <strong>New on rTv?</strong> Register Now!
              </p>
@@ -76,13 +76,13 @@ import {AuthService} from "../shared/auth.service";
 `]
 })
 export class SignupComponent implements OnInit {
-    myForm:FormGroup;
+    myForm: FormGroup;
     error = false;
     errorMessage = '';
     submitted = false;
 
-    constructor(private fb:FormBuilder,
-                private authService:AuthService) {
+    constructor(private fb: FormBuilder,
+        private authService: AuthService) {
     }
 
 
@@ -105,19 +105,19 @@ export class SignupComponent implements OnInit {
     }
 
 
-    isEmail(control:FormControl):{[s:string]:boolean} {
+    isEmail(control: FormControl): { [s: string]: boolean } {
         if (!control.value.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
-            return {noEmail: true};
+            return { noEmail: true };
         }
     }
 
-    isEqualPassword(control:FormControl):{[s:string]:boolean} {
+    isEqualPassword(control: FormControl): { [s: string]: boolean } {
         if (!this.myForm) {
-            return {passwordsNotMatch: true};
+            return { passwordsNotMatch: true };
 
         }
         if (control.value !== this.myForm.controls['password'].value) {
-            return {passwordsNotMatch: true};
+            return { passwordsNotMatch: true };
         }
     }
 }

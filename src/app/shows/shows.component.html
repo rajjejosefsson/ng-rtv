@@ -1,14 +1,12 @@
 <div class="top-navigation">
     <rj-jumbotron [title]="'Popular Shows'">
         <div class="nav-genres">
-            <rj-show-nav (selectedGenre)="getSelectedGenre($event)"
-                         (selectedYear)="getSelectedYear($event)"></rj-show-nav>
+            <rj-show-nav (selectedGenre)="getSelectedGenre($event)" (selectedYear)="getSelectedYear($event)"></rj-show-nav>
         </div>
     </rj-jumbotron>
 </div>
 
 <div class="container">
-
     <div class="loader" *ngIf="shows.length === 0">
         <div class="ui segment">
             <div class="ui active inverted dimmer">
@@ -16,15 +14,9 @@
             </div>
         </div>
     </div>
-
     <div class="shows" *ngIf="shows.length > 0">
-        <div
-             infinite-scroll
-             [infiniteScrollDistance]="2"
-             [infiniteScrollThrottle]="260"
-             (scrolled)="onScroll()">
+        <div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="260" (scrolled)="onScroll()">
             <rj-show-item *ngFor="let show of shows" [show]="show"></rj-show-item>
         </div>
     </div>
 </div>
-

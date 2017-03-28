@@ -1,8 +1,8 @@
 import {Component, OnInit, HostBinding, Input} from '@angular/core';
-import {ShowService} from "./shows/show.service";
-import {FormGroup, Validators, FormBuilder} from "@angular/forms";
-import {AuthService} from "./shared/auth.service";
-import {WatchlistService} from "./watchlist/watchlist.service";
+import {ShowService} from "../shows/show.service";
+import {FormGroup, Validators, FormBuilder} from '@angular/forms';
+import {AuthService} from "../auth/auth.service";
+import {WatchlistService} from "../watchlist/watchlist.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,32 +10,28 @@ import {Router} from "@angular/router";
   templateUrl: 'header.component.html',
   styleUrls: ['header.css']
 })
+
 export class HeaderComponent implements OnInit {
+  myForm: FormGroup;
+  error = false;
+  errorMessage = '';
+  firsttime = true;
+  isCollapsed = true;
 
   constructor(
-      private showService:ShowService,
-      private router:Router,
-      private authService:AuthService,
-      private fb:FormBuilder,
-      private watchlistService:WatchlistService) {
+      private showService: ShowService,
+      private router: Router,
+      private authService: AuthService,
+      private fb: FormBuilder,
+      private watchlistService: WatchlistService) {
   }
 
-  onSearchClick(value:string) {
+  onSearchClick(value: string) {
     this.showService.setTitle(value);
     this.router.navigate(['/detail']);
   }
 
-
-
-  /************************/
-  /*      AUTH           */
-  /************************/
-  myForm:FormGroup;
-  error = false;
-  errorMessage = "";
-
-
-  ngOnInit():any {
+  ngOnInit() {
     this.myForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -43,14 +39,9 @@ export class HeaderComponent implements OnInit {
     this.isAuth();
   }
 
-
   onSignin() {
     this.authService.signinUser(this.myForm.value);
   }
-
-
-
-  firsttime = true;
 
   isAuth() {
     if (this.authService.isAuthenticated()) {
@@ -68,20 +59,6 @@ export class HeaderComponent implements OnInit {
   }
 
 
-
-  public isCollapsed:boolean = true;
-
-  onToggle(){
-    this.isCollapsed = !this.isCollapsed;
-  }
-
-  public collapsed(event:any):void {
-    console.log(event);
-  }
-
-  public expanded(event:any):void {
-    console.log(event);
-  }
 
 
 

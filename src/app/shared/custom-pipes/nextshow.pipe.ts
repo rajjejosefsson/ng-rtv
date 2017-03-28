@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {DatePipe} from "@angular/common";
-import {Episode} from "../../shows/episode";
+import {Episode} from "../models/episode";
 
 @Pipe({
   name: 'nextEpisode'

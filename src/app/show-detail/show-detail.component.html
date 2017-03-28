@@ -1,0 +1,17 @@
+<rj-jumbotron>
+  <h1>Detail Information</h1>
+</rj-jumbotron>
+
+<div class="container">
+  <div class="loading" *ngIf="myShow == null">
+    <div class="ui segment">
+      <div class="ui active inverted dimmer">
+        <div class="huge ui text loader">Loading</div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="myShow != null">
+    <rj-show-detail-item [show]="myShow"></rj-show-detail-item>
+  </div>
+</div>
